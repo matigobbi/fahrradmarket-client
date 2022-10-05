@@ -1,10 +1,6 @@
 import { AuthContext } from '../context/auth.context' 
 import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-
- 
-// import the service file since we need it to send (and get) the data to(from) the server
 import service from "../service";
  
 function CreatePost (props){
@@ -43,12 +39,12 @@ function CreatePost (props){
       .catch(err => console.log("Error while uploading the file: ", err));
   };
   const handleSubmit = e => {
-    e.preventDefault();
- 
+    e.preventDefault(); 
+    
     service
-      .createPost({ owner,owneremail, title, price, description, imageUrl, type, framesize, framematerial, brakes, tubes, years, zipcode, city })
-      .then(res => {
-        // console.log("added new movie: ", res);
+    .createPost({ owner,owneremail, title, price, description, imageUrl, type, framesize, framematerial, brakes, tubes, years, zipcode, city })
+    .then(res => {
+      // console.log("added new movie: ", res);
         // Reset the form
         setTitle("");
         setPrice("");
