@@ -1,5 +1,5 @@
 import PostDetails from "./pages/PostDetails"
-import Navbar from "./components/Navbar";
+import NavBar from "./components/NavBar";
 import HomePage from './pages/HomePage';     
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';    
@@ -29,7 +29,7 @@ function App() {
 	}, []);
 
   return (<>
-      <Navbar/>
+      <NavBar/>
       <div >
         <div className="topBarHomePage bg-green">
           <Link className="linktitle" to="/"><h1 className="titleTopBar">Fahrrad Market </h1></Link>
