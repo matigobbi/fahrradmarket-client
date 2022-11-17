@@ -14,38 +14,36 @@ export default function HomePage(props) {
 
 	const handleInputChange = event => {
     setQuery(event.target.value)
-    console.log(query)
-	}
+    console.log(query)	}
+
 	const handleChange = event => {
 		console.log(event)
-		setSelectQuery(event.target.value)
-	}
+		setSelectQuery(event.target.value)	}
 
 	const handlePushLike = (postId) => {
 		const foundedPost = props.posts.find(post => post._id === postId)
 		props.user && foundedPost.likes.push(`${props.user._id}`)
 		const requestBody= foundedPost.likes
 		axios.put(`${API_URL2}/${postId}/addlike`, requestBody)
-		props.getAllPosts()
-	}
+		props.getAllPosts()	}
 
 
 	const postsReversed = [...props.posts.slice().reverse()]
 
 	const filtered = postsReversed
-															   .filter(posts => {
-																		if (selectQuery=="-99"){ return posts.price < "99"}
-																		if (selectQuery=="100 - 199"){ return posts.price > "100" && posts.price < "199"}
-																		if (selectQuery=="200 - 399"){ return posts.price > "200" && posts.price < "399"}
-																		if (selectQuery=="+400"){ return posts.price > "400"}
-																		if (selectQuery=="Steel"){return posts.framematerial.includes("steel")}
-																		if (selectQuery=="Aluminum"){return posts.framematerial.includes("aluminum")}
-																		if (selectQuery=="Carbon"){return posts.framematerial.includes("carbon") || posts.framematerial.includes("tita")}
-																		if (selectQuery=="all") {return posts}
-																		else {return posts}
+	.filter(posts => {
+		if (selectQuery=="-99"){ return posts.price < "99"}
+		if (selectQuery=="100 - 199"){ return posts.price > "100" && posts.price < "199"}
+		if (selectQuery=="200 - 399"){ return posts.price > "200" && posts.price < "399"}
+		if (selectQuery=="+400"){ return posts.price > "400"}
+		if (selectQuery=="Steel"){return posts.framematerial.includes("steel")}
+		if (selectQuery=="Aluminum"){return posts.framematerial.includes("aluminum")}
+		if (selectQuery=="Carbon"){return posts.framematerial.includes("carbon") || posts.framematerial.includes("tita")}
+		if (selectQuery=="all") {return posts}
+		else {return posts}
 })
-																.filter(posts => {
-																		return posts.title.toLowerCase().includes(query.toLowerCase())
+	.filter(posts => {
+			return posts.title.toLowerCase().includes(query.toLowerCase())
 });    
 
     return (<>    

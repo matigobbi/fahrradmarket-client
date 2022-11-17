@@ -24,9 +24,6 @@ function CreatePost (props){
     // console.log("The file to be uploaded is: ", e.target.files[0]);
  
     const uploadData = new FormData();
- 
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("imageUrl", e.target.files[0]);
  
     service
@@ -44,7 +41,6 @@ function CreatePost (props){
     service
     .createPost({ owner,owneremail, title, price, description, imageUrl, type, framesize, framematerial, brakes, tubes, years, zipcode, city })
     .then(res => {
-      // console.log("added new movie: ", res);
         // Reset the form
         setTitle("");
         setPrice("");
@@ -139,10 +135,7 @@ function CreatePost (props){
           onChange={(e) => setDescription(e.target.value)} />
 
         <b>Upload a file *</b>
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
-        {/* <input type="file" onChange={(e) => handleFileUpload(e)} />
-        <input type="file" onChange={(e) => handleFileUpload(e)} /> */}
- 
+        <input type="file" onChange={(e) => handleFileUpload(e)} /> 
         <button type="submit"><b>Create new Post</b></button>
       </form>
     </div>) : (<div className="errormessage"> This page is only for Logged in users <div>¯\_(ツ)_/¯</div> </div>)}
