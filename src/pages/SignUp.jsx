@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const API_URL = "https://fahrradmarket.cyclic.app";
+const API_URL2 = "http://localhost:5005"
+
 
 export default function Signup() {
 
@@ -16,7 +18,7 @@ export default function Signup() {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { email, password, name, birth, country }
-		axios.post(`${API_URL}/auth/signup`, requestBody)
+		axios.post(`${API_URL2}/auth/signup`, requestBody)
 			.then(response => {
 				// redirect to login
 				navigate('/login')

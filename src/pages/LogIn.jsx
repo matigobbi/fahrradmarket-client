@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../context/auth.context'
 const API_URL = "https://fahrradmarket.cyclic.app";
+const API_URL2 = "http://localhost:5005"
+
 
 export default function Login() {
 
@@ -17,7 +19,7 @@ export default function Login() {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { email, password }
-		axios.post(`${API_URL}/auth/login`, requestBody)
+		axios.post(`${API_URL2}/auth/login`, requestBody)
 			.then(response => {
 				// redirect to projects
 				console.log('you have a token')

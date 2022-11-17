@@ -2,7 +2,10 @@ import "../style.css"
 import axios from 'axios'
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom"
-const API_URL = "http://localhost:5005";
+import Loading from "./../components/Loading"
+const API_URL = "https://fahrradmarket.cyclic.app";
+const API_URL2 = "http://localhost:5005"
+
 
 
 export default function HomePage(props) {
@@ -22,7 +25,7 @@ export default function HomePage(props) {
 		const foundedPost = props.posts.find(post => post._id === postId)
 		props.user && foundedPost.likes.push(`${props.user._id}`)
 		const requestBody= foundedPost.likes
-		axios.put(`${API_URL}/${postId}/addlike`, requestBody)
+		axios.put(`${API_URL2}/${postId}/addlike`, requestBody)
 		props.getAllPosts()
 	}
 
@@ -60,7 +63,7 @@ export default function HomePage(props) {
 			<button className="searchButtons" value="Carbon" onClick={handleChange}> Carbon // Titanium</button>
 		</div>
 
-      {!props.posts ? (<>Loading...</>) : 
+      {!props.posts ? (<Loading/>) : 
 		(<div className="postCards"> {filtered.map((post)=>(
 			<li key= {post._id} className='postItem'>
 				<div className="post">

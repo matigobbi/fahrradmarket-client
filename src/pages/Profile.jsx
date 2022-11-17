@@ -3,6 +3,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const API_URL = "https://fahrradmarket.cyclic.app";
+const API_URL2 = "http://localhost:5005"
+
 
 export default function Profile(props) {
 
@@ -15,7 +17,7 @@ const navigate = useNavigate()
 
 
 const deleteProject = (key) => {
-  axios.delete(`${API_URL}/posts/${key}`)
+  axios.delete(`${API_URL2}/posts/${key}`)
     .then(() => {
       // redirect 
       navigate('/')

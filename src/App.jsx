@@ -11,13 +11,13 @@ import axios from 'axios'
 import { AuthContext } from './context/auth.context' 
 import './style.css'
 const API_URL = "https://fahrradmarket.cyclic.app";
-
+const API_URL2 = "http://localhost:5005"
 function App() {
   const { isLoggedIn, logoutUser, user } = useContext(AuthContext)
   const [Posts, setPosts] = useState([])
 
 	const getAllPosts = () => {
-		axios.get(`${API_URL}/posts`)
+		axios.get(`${API_URL2}/posts`)
 			.then(response => {
 				//  console.log(response)
 				setPosts(response.data)
