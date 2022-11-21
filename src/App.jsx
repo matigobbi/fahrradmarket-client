@@ -17,7 +17,7 @@ function App() {
   const [Posts, setPosts] = useState([])
 
 	const getAllPosts = () => {
-		axios.get(`${API_URL2}/posts`)
+		axios.get(`${API_URL}/posts`)
 			.then(response => {
 				//  console.log(response)
 				setPosts(response.data)
