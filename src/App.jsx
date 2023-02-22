@@ -10,14 +10,15 @@ import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { AuthContext } from './context/auth.context' 
 import './style.css'
-const API_URL = "https://fahrradmarket.cyclic.app";
+import Createform from "./pages/Createform"
+const API_URL = "https://fahrradmarket.cyclic.app" ;
 const API_URL2 = "http://localhost:5005"
 function App() {
   const { isLoggedIn, logoutUser, user } = useContext(AuthContext)
   const [Posts, setPosts] = useState([])
 
 	const getAllPosts = () => {
-		axios.get(`${API_URL}/posts`)
+		axios.get(`${API_URL2}/posts`)
 			.then(response => {
 				//  console.log(response)
 				setPosts(response.data)
@@ -42,7 +43,8 @@ function App() {
         <Route exact path="/Profile" element={<Profile posts={Posts}/>} />
         <Route exact path="/LogIn" element={<LogIn />} />
         <Route exact path="/SignUp" element={<SignUp />} />
-        <Route exact path="/CreatePost" element={<CreatePost user={user}/>} />  
+        <Route exact path="/CreatePost" element={<CreatePost user={user}/>} /> 
+        <Route exact path="/caroform" element={<Createform posts={Posts} user={user}/>} /> 
         <Route exact path="/:_id" element={<PostDetails posts={Posts} user={user}/>} />
         <Route exact path="/Profile/:_id" element={<PostDetails posts={Posts}/>} />
       </Routes>

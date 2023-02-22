@@ -10,7 +10,6 @@ function CreatePost (props){
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
   const [type, setType] = useState("");
   const [framesize, setFramesize] = useState("");
   const [framematerial, setFramematerial] = useState("");
@@ -19,6 +18,7 @@ function CreatePost (props){
   const [years, setYears] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [city, setCity] = useState("Berlin");
+  const [imageUrl, setImageUrl] = useState("");
  
   const handleFileUpload = e => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);

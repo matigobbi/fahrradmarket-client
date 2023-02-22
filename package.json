@@ -11,7 +11,9 @@
   "dependencies": {
     "axios": "^0.27.2",
     "framer-motion": "^6.3.3",
+    "opening_hours": "^3.8.0",
     "react": "^18.0.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0"
   },
