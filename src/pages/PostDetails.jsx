@@ -1,11 +1,17 @@
 import { useParams } from "react-router-dom" 
+import { useEffect } from "react"
 import React from 'react'
 import RelatedPosts from "./../components/RelatedPosts"
 
 export default function Postdetails (props) {
   const params = useParams()
+
   const id = params._id
   const date =  (!props.user? "" : new Intl.DateTimeFormat('en-GB', { year: 'numeric', year: "2-digit", month: '2-digit', day: '2-digit' }).format(props.user.iat))
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [params]);
   
   console.log(date)
   const post= props.posts.find(post => post._id === id)

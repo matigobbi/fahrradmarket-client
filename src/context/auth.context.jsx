@@ -45,8 +45,7 @@ function AuthProviderWrapper(props) {
 		// update the state
 		setIsLoggedIn(false)
 		setUser(null)
-
-	}
+		}
 
 	useEffect(() => {
 		verifyStoredToken()
