@@ -1,3 +1,7 @@
+import React, { useState, useContext, useEffect } from 'react'
+import { Routes, Route, Link } from "react-router-dom"; 
+import { AuthContext } from './context/auth.context' 
+import Conversations from './pages/Conversations';
 import PostDetails from "./pages/PostDetails"
 import NavBar from "./components/NavBar";
 import HomePage from './pages/HomePage';     
@@ -5,12 +9,9 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';    
 import CreatePost from './pages/CreatePost';
 import Profile from './pages/Profile';      
-import { Routes, Route, Link } from "react-router-dom"; 
-import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
-import { AuthContext } from './context/auth.context' 
-import './style.css'
 import Createform from "./pages/Createform"
+import './style.css'
 const API_URL = "https://fahrradmarket.cyclic.app" ;
 const API_URL2 = "http://localhost:5005"
 function App() {
@@ -39,14 +40,15 @@ function App() {
         </div>
       </div>
       <Routes>
-        <Route exact path="/" element={<HomePage getAllPosts={getAllPosts} posts={Posts} user={user}/>} />
-        <Route exact path="/Profile" element={<Profile posts={Posts}/>} />
-        <Route exact path="/LogIn" element={<LogIn />} />
-        <Route exact path="/SignUp" element={<SignUp />} />
-        <Route exact path="/CreatePost" element={<CreatePost user={user}/>} /> 
-        <Route exact path="/caroform" element={<Createform posts={Posts} user={user}/>} /> 
-        <Route exact path="/:_id" element={<PostDetails posts={Posts} user={user}/>} />
-        <Route exact path="/Profile/:_id" element={<PostDetails posts={Posts}/>} />
+        <Route path="/" element={<HomePage getAllPosts={getAllPosts} posts={Posts} user={user}/>} />
+        <Route path="/Profile" element={<Profile posts={Posts}/>} />
+        <Route path="/LogIn" element={<LogIn />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/CreatePost" element={<CreatePost user={user}/>} /> 
+        <Route path="/caroform" element={<Createform posts={Posts} user={user}/>} /> 
+        <Route path="/Profile/:_id" element={<PostDetails posts={Posts}/>} />
+        <Route path="Conversations" element={<Conversations />}/>
+        <Route path="/:_id" element={<PostDetails posts={Posts} user={user}/>} />
       </Routes>
       </>
   )

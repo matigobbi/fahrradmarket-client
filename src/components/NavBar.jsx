@@ -12,6 +12,7 @@ const links =   [
   { name: "Sign Up", to: "SignUp", id: 3 ,displayNotLogged: "n"},
   { name: "Create a Post", to: "CreatePost", id: 4 ,displayNotLogged: "y"},
   { name: "My profile", to: "Profile", id: 5, displayNotLogged: "y"},
+  { name: "Conversations", to: "Conversations", id: 5, displayNotLogged: "y"}
 ];
 const itemVariants = {
   closed: {

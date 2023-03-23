@@ -1,24 +1,38 @@
-import { useParams } from "react-router-dom" 
-import { useEffect } from "react"
 import React from 'react'
+import { useParams, Link } from "react-router-dom" 
+import { useEffect, useState } from "react"
 import RelatedPosts from "./../components/RelatedPosts"
+import axios from 'axios'
+const API_URL = "https://fahrradmarket.cyclic.app";
+const API_URL2 = "http://localhost:5005"
 
 export default function Postdetails (props) {
+  const [sameuser, setSameuser] = useState(undefined)
   const params = useParams()
 
   const id = params._id
-  const date =  (!props.user? "" : new Intl.DateTimeFormat('en-GB', { year: 'numeric', year: "2-digit", month: '2-digit', day: '2-digit' }).format(props.user.iat))
+  // const date =  (!props.user? "" : new Intl.DateTimeFormat('en-GB', { year: 'numeric', year: "2-digit", month: '2-digit', day: '2-digit' }).format(props.user.iat))
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [params]);
   
-  console.log(date)
   const post= props.posts.find(post => post._id === id)
   
-  return <div className="bigcontainer"> 
+  function createConv() {
+    if(props.user._id === post.owner) { 
+      setSameuser("You cannot start to chat with yourself") 
+      return
+    }
+    let body = [props.user._id, post.owner]
+    axios.post(`${API_URL2}/conversations` , body)
+    .then(res=> console.log(res.data))
+    .catch(err=> console.log(err))
+  }
+  
+  return <div> 
   {!post ? (<>Loading...</>) :  
-  <li key= {post._id} className="containerItemDetail biting">
+  <li key= {post._id} className="containerItemDetail">
 				<div className="post">
           <img className="imgPost" src={post.imageUrl}/> 
 					<div className="postContent">
@@ -40,8 +54,10 @@ export default function Postdetails (props) {
             </div>
             <div>
             {!post.owner? <></> : 
-              <div> <strong>If you are interested in this bike just contact me:</strong>
-                <div>{post.owneremail}</div>
+              <div> <strong>Would you like to contact this person?</strong>
+              <br/>
+                <Link to="/conversations" onClick={createConv}> Start a conversation with the owner</Link>
+                {sameuser && sameuser}
               </div>}
             </div>
           </div>
