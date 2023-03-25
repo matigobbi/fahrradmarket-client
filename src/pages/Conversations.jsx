@@ -11,7 +11,6 @@ const API_URL2 = "http://localhost:5005"
 
 export default function Conversations() {
   const [conversations, setConversations] = useState([]);
-  console.log(conversations)
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -38,16 +37,14 @@ export default function Conversations() {
   }, [arrivalMessage, currentChat]);
 
   useEffect(() => {
-    socket.current.emit("addUser", user._id);
+    socket.current.emit("addUser", user?._id);
     socket.current.on("getUsers", (users) => {
-      setOnlineUsers(
-        user.followings.filter((f) => users.some((u) => u.userId === f))
-      );
     });
   }, [user]);
 
   useEffect(() => {
     const getConversations = async () => {
+      console.log(user);
       if (!user) return
       try {
         const res = await axios.get(`${API_URL2}/conversations/` + user?._id);
@@ -72,12 +69,13 @@ export default function Conversations() {
   }, [currentChat]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     const message = {
       sender: user._id,
       text: newMessage,
       conversationId: currentChat._id,
     };
+
+    if(message.text == "") return
     
     const receiverId = currentChat.members.find(
       (member) => member !== user._id
@@ -101,6 +99,12 @@ export default function Conversations() {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit((e)=> (e))
+    }
+  }
 
   return (
     <>
@@ -128,7 +132,8 @@ export default function Conversations() {
                 <div className="chatBoxBottom">
                   <textarea
                     className="chatMessageInput"
-                    placeholder="write something..."
+                    placeholder="Press enter to send somehting..."
+                    onKeyDown={handleKeyDown}
                     onChange={(e) => setNewMessage(e.target.value)}
                     value={newMessage}
                   ></textarea>

@@ -360,41 +360,11 @@ button:hover {
 .liked {
   background-color: #273329;
 }
-/* conversation  */
-.conversation {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  cursor: pointer;
-  margin-top: 20px;
-}
 
-.conversation:hover {
-  background-color: rgb(245, 243, 243);
-}
-
-.conversationImg {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 20px;
-}
-
-.conversationName {
-  font-weight: 500;
-}
-
-@media screen and (max-width: 768px) {
-  .conversationName {
-    display: none;
-  }
-}
-
-/* message */
+/* conversations */
 
 .messenger {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 150px);
   display: flex;
 }
 
@@ -404,9 +374,8 @@ button:hover {
 
 .chatMenuInput {
   width: 90%;
-  padding: 10px 0;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(240, 10, 10);
 }
 
 .chatBox {
@@ -434,9 +403,10 @@ button:hover {
 }
 
 .chatMessageInput {
-  width: 80%;
+  width: 90%;
   height: 90px;
   padding: 10px;
+  resize: none;
 }
 
 .chatSubmitButton {
@@ -445,8 +415,7 @@ button:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: teal;
-  color: white;
+  background-color: #b6e998;
 }
 
 .chatOnline {
@@ -486,7 +455,47 @@ button:hover {
   }
 }
 
-/* conversation */
+/* message */
+ .message {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.messageTop{
+    display: flex;
+}
+
+.messageImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.messageText{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(100, 204, 100);
+    max-width: 300px;
+}
+
+.messageBottom{
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.message.own{
+    align-items: flex-end;
+}
+
+.message.own .messageText{
+    background-color: rgb(227, 233, 201);
+    color: black;
+}
+
+/* conversations */
 
 .conversation {
   display: flex;
@@ -497,7 +506,7 @@ button:hover {
 }
 
 .conversation:hover {
-  background-color: rgb(76, 187, 145);
+  background-color: rgb(205, 233, 197);
   border-radius: 10px;
 }
 

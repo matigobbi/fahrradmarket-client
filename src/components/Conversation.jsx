@@ -21,7 +21,7 @@ export default function Conversation({ conversation, currentUser }) {
 
   return (
     <div className="conversation">
-      <span className="conversationName">{user?.name}</span>
+      <span className="conversationName">{user?.name[0].toUpperCase() + user?.name.slice(1)}</span>
     </div>
   );
 }
