@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import Conversation from "../components/Conversation";
 import axios from "axios";
-// import { io } from "socket.io-client";
+import { io } from "socket.io-client";
 
 const API_URL = "https://fahrradmarket.cyclic.app";
 const API_URL2 = "http://localhost:5005"
@@ -20,31 +20,31 @@ export default function Conversations() {
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
 
-  // useEffect(() => {
-  //   socket.current = io("ws://localhost:8900");
-  //   socket.current.on("getMessage", (data) => {
-  //     setArrivalMessage({
-  //       sender: data.senderId,
-  //       text: data.text,
-  //       createdAt: Date.now(),
-  //     });
-  //   });
-  // }, []);
+  useEffect(() => {
+    socket.current = io("http://localhost:5005");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
 
-  // useEffect(() => {
-  //   arrivalMessage &&
-  //     currentChat?.members.includes(arrivalMessage.sender) &&
-  //     setMessages((prev) => [...prev, arrivalMessage]);
-  // }, [arrivalMessage, currentChat]);
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
 
-  // useEffect(() => {
-  //   socket.current.emit("addUser", user._id);
-  //   socket.current.on("getUsers", (users) => {
-  //     setOnlineUsers(
-  //       user.followings.filter((f) => users.some((u) => u.userId === f))
-  //     );
-  //   });
-  // }, [user]);
+  useEffect(() => {
+    socket.current.emit("addUser", user._id);
+    socket.current.on("getUsers", (users) => {
+      setOnlineUsers(
+        user.followings.filter((f) => users.some((u) => u.userId === f))
+      );
+    });
+  }, [user]);
 
   useEffect(() => {
     const getConversations = async () => {
@@ -78,16 +78,16 @@ export default function Conversations() {
       text: newMessage,
       conversationId: currentChat._id,
     };
-
+    
     const receiverId = currentChat.members.find(
       (member) => member !== user._id
     );
 
-    // socket.current.emit("sendMessage", {
-    //   senderId: user._id,
-    //   receiverId,
-    //   text: newMessage,
-    // });
+    socket.current.emit("sendMessage", {
+      senderId: user._id,
+      receiverId,
+      text: newMessage,
+    });  
 
     try {
       const res = await axios.post(`${API_URL2}/messages`, message);
