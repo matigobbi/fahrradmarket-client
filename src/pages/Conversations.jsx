@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import Conversation from "../components/Conversation";
 import axios from "axios";
 import { io } from "socket.io-client";
+import { Link } from "react-router-dom";
 
 const API_URL = "https://fahrradmarket.cyclic.app";
 const API_URL2 = "http://localhost:5005"
@@ -108,7 +109,7 @@ export default function Conversations() {
 
   return (
     <>
-      <div className="messenger">
+    {!user ? (<div className="errormessage">    This page is only for Logged in users <div>¯\_(ツ)_/¯</div> <button><Link to="Login">Log In</Link></button></div>): <div className="messenger">
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             {conversations.map((c) => (
@@ -149,7 +150,8 @@ export default function Conversations() {
             )}
           </div>
         </div>
-      </div>
+      </div>}
+      
     </>
   );
 }

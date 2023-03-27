@@ -56,7 +56,7 @@ const deleteProject = (key) => {
       ))}</div>
     </div>
   </div>
-  </>):(<div className="errormessage">    This page is only for Logged in users <div>¯\_(ツ)_/¯</div> </div>)
+  </>):(<div className="errormessage"> This page is only for Logged in users <div>¯\_(ツ)_/¯</div><button><Link to="Login">Log In</Link></button> </div>)
 }
   </>
 };

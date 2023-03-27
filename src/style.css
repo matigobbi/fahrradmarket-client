@@ -246,10 +246,20 @@ aside {
   flex-direction: column;
   padding: 0px 25px 0px;
 }
+
+/* Form  */
+
 .form {
   display: flex;
   flex-direction: column;
   margin: 0 61px;
+}
+.form input {
+  margin: 10px 0;
+}
+
+.form select {
+  margin: 10px 0;
 }
 
 textarea {
@@ -311,7 +321,12 @@ button.logInButton {
 .formAgrup {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+}
+
+.formAgrup input{
+  margin-top: -5px;
+  margin-right: 10px;
 }
 
 .container-navbar a {

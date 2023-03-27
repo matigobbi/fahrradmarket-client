@@ -1,6 +1,6 @@
 import { AuthContext } from '../context/auth.context' 
 import React, { useState, useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import service from "../service";
  
 function CreatePost (props){
@@ -109,23 +109,23 @@ function CreatePost (props){
         <option value="titanium/magnesium">Titanum/magnesium</option>
         </select>      
         <div className='formAgrup'>
-          <b>Brakes
+          <b> <p>Brakes</p>
             <input type="text" name="brakes" value={brakes} 
               onChange={(e) => setBrakes(e.target.value)}/>
           </b>
-          <b>Tubes
+          <b> <p>Tubes</p>
             <input type="tubes" name="tubes" value={tubes} 
               onChange={(e) => setTubes(e.target.value)}/>
           </b>
-          <b>Years Old
+          <b> <p>Years Old</p>
             <input type="years" name="years" value={years} 
               onChange={(e) => setYears(e.target.value)}/>
           </b>
-          <b>Zip Code
+          <b> <p>Zip Code</p>
           <input type="zipcode" name="zipcode" value={zipcode} 
             onChange={(e) => setZipcode(e.target.value)}/>
           </b>
-          <b>City
+          <b> <p>City</p>
           <input type="city" name="city" value={city} 
             onChange={(e) => setCity(e.target.value)}/>   
           </b>
@@ -138,7 +138,7 @@ function CreatePost (props){
         <input type="file" onChange={(e) => handleFileUpload(e)} /> 
         <button type="submit"><b>Create new Post</b></button>
       </form>
-    </div>) : (<div className="errormessage"> This page is only for Logged in users <div>¯\_(ツ)_/¯</div> </div>)}
+    </div>) : (<div className="errormessage"> This page is only for Logged in users <div>¯\_(ツ)_/¯ </div> <button><Link to="Login">Log In</Link></button></div> )}
     </>
   );
 }
