@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: #273329;
+}
+
 body {
   background-color: whitesmoke;
   font-family: "Titillium Web", sans-serif;
@@ -153,25 +158,37 @@ aside {
   align-content: center;
   gap: 30px;
 }
+
+/* Profile Page */
+.profilePage h1 {
+  text-align: center;
+  margin-left: -90px;
+}
+
 .containerProfile {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 40px;
 }
+
 .itemProfile {
   background-color: #a3d39b;
   text-decoration: none;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  padding: 6px 20px;
+  padding: 20px 50px;
 }
+
 .itemProfile h3 {
+  font-size: 22px;
   text-align: center;
   background-color: #29a89e;
   border-radius: 5px;
+  margin-top: 0px;
 }
+
 @media screen and (max-width: 45rem) {
   .containerItemDetail {
     width: 100%;
@@ -198,6 +215,8 @@ aside {
   flex-direction: row;
 }
 
+/* Post Details */
+
 .post {
   background-color: white;
   border-radius: 0.25rem;
@@ -222,10 +241,16 @@ aside {
   max-width: 100%;
   vertical-align: middle;
 }
+
 .postTitle {
   color: #273329;
   font-size: 20px;
   font-weight: 200px;
+}
+
+.containerInfo div p{
+  margin-top: -15px;
+  color: rgb(87, 87, 87);
 }
 
 .postPrice {
@@ -233,6 +258,7 @@ aside {
   flex: 1 1 auto;
   font-size: 1.475rem;
 }
+
 .postContent {
   display: flex;
   flex: 1 1 auto;
@@ -254,6 +280,7 @@ aside {
   flex-direction: column;
   margin: 0 61px;
 }
+
 .form input {
   margin: 10px 0;
 }
@@ -324,7 +351,7 @@ button.logInButton {
   flex-wrap: wrap;
 }
 
-.formAgrup input{
+.formAgrup input {
   margin-top: -5px;
   margin-right: 10px;
 }
@@ -339,6 +366,7 @@ button.logInButton {
 }
 
 button {
+  text-decoration: none;
   cursor: pointer;
   margin: 1.25rem;
   border: none;
@@ -461,24 +489,24 @@ button:hover {
     display: none;
   }
 
-  .chatBox{
+  .chatBox {
     flex: 10;
   }
 
-  .chatOnline{
+  .chatOnline {
     flex: 1px;
   }
 }
 
 /* message */
- .message {
+.message {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
 
-.messageTop{
-    display: flex;
+.messageTop {
+  display: flex;
 }
 
 .messageImg {
@@ -489,25 +517,25 @@ button:hover {
   margin-right: 10px;
 }
 
-.messageText{
-    padding: 10px;
-    border-radius: 20px;
-    background-color: rgb(100, 204, 100);
-    max-width: 300px;
+.messageText {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgb(100, 204, 100);
+  max-width: 300px;
 }
 
-.messageBottom{
-    font-size: 12px;
-    margin-top: 10px;
+.messageBottom {
+  font-size: 12px;
+  margin-top: 10px;
 }
 
-.message.own{
-    align-items: flex-end;
+.message.own {
+  align-items: flex-end;
 }
 
-.message.own .messageText{
-    background-color: rgb(227, 233, 201);
-    color: black;
+.message.own .messageText {
+  background-color: rgb(227, 233, 201);
+  color: black;
 }
 
 /* conversations */

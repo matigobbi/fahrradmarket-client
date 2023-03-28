@@ -112,11 +112,11 @@ export default function Conversations() {
     {!user ? (<div className="errormessage">    This page is only for Logged in users <div>¯\_(ツ)_/¯</div> <button><Link to="Login">Log In</Link></button></div>): <div className="messenger">
         <div className="chatMenu">
           <div className="chatMenuWrapper">
-            {conversations.map((c) => (
+          {!conversations? <>You dont have any conversation yet </> : <>{conversations.map((c) => (
               <div onClick={() => setCurrentChat(c)}>
                 <Conversation conversation={c} currentUser={user} />
               </div>
-            ))}
+            ))} </>}
           </div>
         </div>
         <div className="chatBox">

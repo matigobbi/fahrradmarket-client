@@ -74,12 +74,12 @@ function CreatePost (props){
 
         <select id="type" name="type" value={type} 
           onChange={(e) => setType(e.target.value)}>
-        <option value="city">City Bike</option>
-        <option value="road">Road Bike</option>
-        <option value="singlespeed">Single Speed/FixedGear</option>
-        <option value="mtb">Mountain Bike</option>
-        <option value="folding">Folding Bike</option>
-        <option value="bmx">BMX</option>
+        <option value="City">City Bike</option>
+        <option value="Road">Road Bike</option>
+        <option value="Singlespeed">Single Speed/FixedGear</option>
+        <option value="Mtb">Mountain Bike</option>
+        <option value="Folding">Folding Bike</option>
+        <option value="Bmx">BMX</option>
         </select>
           
         <b>Frame Size</b>
@@ -103,10 +103,10 @@ function CreatePost (props){
         <b>Frame Material</b>
         <select type="text" name="framematerial" value={framematerial} 
           onChange={(e) => setFramematerial(e.target.value)}>
-        <option value="steel">Steel </option>
-        <option value="aluminum">Aluminum</option>
-        <option value="carbon">Carbon</option>
-        <option value="titanium/magnesium">Titanum/magnesium</option>
+        <option value="Steel">Steel </option>
+        <option value="Aluminum">Aluminum</option>
+        <option value="Carbon">Carbon</option>
+        <option value="Titanium/magnesium">Titanum/magnesium</option>
         </select>      
         <div className='formAgrup'>
           <b> <p>Brakes</p>

@@ -26,7 +26,7 @@ const deleteProject = (key) => {
 }
 
   return <>
-  {user? (<>
+  {user? (<div className='profilePage'>
   <h1 >Profile page:</h1>
   <div className="containerProfile">
     <div className="itemProfile">
@@ -56,7 +56,7 @@ const deleteProject = (key) => {
       ))}</div>
     </div>
   </div>
-  </>):(<div className="errormessage"> This page is only for Logged in users <div>¯\_(ツ)_/¯</div><button><Link to="Login">Log In</Link></button> </div>)
+  </div>):(<div className="errormessage"> This page is only for Logged in users <div>¯\_(ツ)_/¯</div><button><Link to="Login">Log In</Link></button> </div>)
 }
   </>
 };

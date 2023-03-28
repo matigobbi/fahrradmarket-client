@@ -37,9 +37,11 @@ export default function Postdetails (props) {
           <img className="imgPost" src={post.imageUrl}/> 
 					<div className="postContent">
             <div className="containerInfo title">
-              <h1 className="postTitle">{post.title}</h1>
-              <p>{!post.zipcode ? <></> : <span> Location: {post.zipcode}</span>},{post.city} </p>
-              <p className="price">{!post.price ? <></> :<span className="postPrice">€ {post.price}</span>}</p>
+              <div>
+                <h1 className="postTitle">{post.title}</h1>
+                <p>{!post.zipcode ? <></> : <span> Location: {post.zipcode}</span>},{post.city} </p>
+              </div>
+              <p className="price">{!post.price ? <></> :<span className="postPrice"> Price:  {post.price}€</span>}</p>
             </div>
             <div className="containerInfo table">
               {!post.type ? <></> :<div><h3>Type</h3><p>{post.type}</p></div>}
@@ -56,7 +58,9 @@ export default function Postdetails (props) {
             {!post.owner? <></> : 
               <div> <strong>Would you like to contact this person?</strong>
               <br/>
-                <Link to="/conversations" onClick={createConv}> Start a conversation with the owner</Link>
+                <button>
+                  <Link to="/conversations" onClick={createConv}> Start a conversation with the owner</Link>
+                </button>
                 {sameuser && sameuser}
               </div>}
             </div>
