@@ -376,8 +376,50 @@ button {
   border-style: hidden;
 }
 
+
 button:hover {
   background-color: #a1cf86;
+}
+
+button.likeButton{
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  max-width: 42px;
+  padding: 0px 15px;
+  background-color: #b6e998;
+  border-radius: 10px;
+  border-style: hidden;
+  transition-duration: 0.4s;
+}
+
+.likeButton:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 10px 10px rgb(0, 156, 47);
+}
+
+.likeButton:active:after {
+  box-shadow: 0 0 0 0 white;
+  position: absolute;
+  border-radius: 4em;
+  left: 0;
+  top:0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.likeButton:active {
+  top: 1px;
 }
 
 .searchButtons {
@@ -400,9 +442,6 @@ button:hover {
   color: #00a5d9;
 }
 
-.liked {
-  background-color: #273329;
-}
 
 /* conversations */
 

@@ -27,7 +27,13 @@ function App() {
 			.catch(err => console.log(err))
 	}
 	useEffect(() => {
-		getAllPosts()
+    console.log("executed")
+    axios.get(`${API_URL2}/posts`)
+    .then(response => {
+      //  console.log(response)
+      setPosts(response.data)
+    })
+    .catch(err => console.log(err))
 	}, []);
 
   return (<>

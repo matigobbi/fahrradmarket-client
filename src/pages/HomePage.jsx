@@ -21,12 +21,22 @@ export default function HomePage(props) {
 		setSelectQuery(event.target.value)	}
 
 	const handlePushLike = (postId) => {
-		const foundedPost = props.posts.find(post => post._id === postId)
-		props.user && foundedPost.likes.push(`${props.user._id}`)
-		const requestBody= foundedPost.likes
-		axios.put(`${API_URL2}/${postId}/addlike`, requestBody)
-		props.getAllPosts()
-	
+			if(props.user) {
+			const foundedPost = props.posts.find(post => post._id === postId)
+			if(foundedPost.likes.includes(props.user._id)){
+				const index = foundedPost.likes.indexOf(props.user._id);
+				console.log(index);
+				foundedPost.likes.splice(index, 1)
+				console.log(foundedPost.likes)
+			} else {
+				foundedPost.likes.push(`${props.user._id}`)
+			}
+			const requestBody= foundedPost.likes
+			axios.put(`${API_URL2}/${postId}/addlike`, requestBody)
+			.then(()=>{
+				props.getAllPosts()
+			})
+		}
 	}
 
 
@@ -73,7 +83,7 @@ export default function HomePage(props) {
 						<p className="postAdress"> {post.zipcode}, {post.city}</p>
 						<div className="pricenAndLike">
 							<p className="postPrice">€ {post.price}</p>
-							{!props.user? <></> : <button className="likeButton" onClick={() => {handlePushLike(post._id)}}> {post.likes.includes(props.user._id) ? <p >Liked</p> : <p>❤</p>} </button>}
+							{!props.user? <></> : <button className="likeButton" onClick={() => {handlePushLike(post._id)}}> {post.likes.includes(props.user._id) ? <p style={{color: "#6C0707"}}>❤</p> : <p>♡</p>} </button>}
 						</div>
 					</div>
 				</div>
