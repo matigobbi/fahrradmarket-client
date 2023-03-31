@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, Link } from "react-router-dom" 
+import { useParams, Link,useNavigate } from "react-router-dom" 
 import { useEffect, useState } from "react"
 import RelatedPosts from "./../components/RelatedPosts"
 import axios from 'axios'
@@ -9,6 +9,7 @@ const API_URL2 = "http://localhost:5005"
 export default function Postdetails (props) {
   const [sameuser, setSameuser] = useState(undefined)
   const params = useParams()
+  const navigate =useNavigate()
 
   const id = params._id
   // const date =  (!props.user? "" : new Intl.DateTimeFormat('en-GB', { year: 'numeric', year: "2-digit", month: '2-digit', day: '2-digit' }).format(props.user.iat))
@@ -21,13 +22,13 @@ export default function Postdetails (props) {
   
   function createConv() {
     if(props.user._id === post.owner) { 
-      setSameuser("You cannot start to chat with yourself") 
+      setSameuser("You cannot start a chat with yourself") 
       return
     }
     let body = [props.user._id, post.owner]
     axios.post(`${API_URL2}/conversations` , body)
-    .then(res=> console.log(res.data))
-    .catch(err=> console.log(err))
+    .then(res=> navigate("/conversations"))
+    .catch(err=> navigate("/conversations"))
   }
   
   return <div> 
@@ -59,9 +60,9 @@ export default function Postdetails (props) {
               <div> <strong>Would you like to contact this person?</strong>
               <br/>
                 <button>
-                  <Link to="/conversations" onClick={createConv}> Start a conversation with the owner</Link>
+                  <button onClick={createConv}> Start a conversation with the owner</button>
                 </button>
-                {sameuser && sameuser}
+                <p style={{"color":"red"}}>{sameuser && sameuser}</p>
               </div>}
             </div>
           </div>

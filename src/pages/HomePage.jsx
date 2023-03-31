@@ -66,8 +66,6 @@ export default function HomePage(props) {
 			<button className="searchButtons" value="100 - 199" onClick={handleChange}>100€ - 199€</button>
 			<button className="searchButtons" value="200 - 399" onClick={handleChange}>200€ - 399€</button>
 			<button className="searchButtons" value="+400" onClick={handleChange}>+400€</button>
-		</div>
-		<div>
 			<button className="searchButtons" value="Steel" onClick={handleChange}> Steel</button>
 			<button className="searchButtons" value="Aluminum" onClick={handleChange}> Aluminum</button>
 			<button className="searchButtons" value="Carbon" onClick={handleChange}> Carbon // Titanium</button>

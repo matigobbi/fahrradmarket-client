@@ -89,16 +89,32 @@ aside {
   padding: 0;
 }
 
+/* Home Page Posts */
+
+
+
 .postItem {
   display: flex;
+  align-items: baseline;
   padding: 1rem;
 }
 
 .postItem:hover {
   outline: none;
-  box-shadow: 2px 3px 9px 0px rgba(164, 170, 163, 0.63);
   border-radius: 20px;
 }
+
+.post {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0px;
+  margin: 5px;
+}
+
 
 .containerItemDetail {
   display: flex;
@@ -217,16 +233,6 @@ aside {
 
 /* Post Details */
 
-.post {
-  background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding: 0px;
-  margin: 5px;
-}
 
 .relatedPostItem {
   background-color: white;
